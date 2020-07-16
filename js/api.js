@@ -1,12 +1,14 @@
 // api url
-const url = "https://environment.data.gov.uk/flood-monitoring/id/stations/0240120/readings?_sorted&_limit=100";
+const url = "https://pjx02kldej.execute-api.eu-west-1.amazonaws.com/default/get_river_level";
 fetch(url).then((resp) => resp.json())
 .then(function(data) {
 
     /// INSERT CODE HERE
+    var date = data["date_time"]
+    var level = data["river_level"]
  
     // current level is displayed with time formatted
-    document.getElementById("currentLevel").innerHTML = "<h1 ><em> Current Level: </em>" + RIVER LEVEL VAR + "m <em>at</em> " + TIME VAR+ "</h1>"
+    document.getElementById("currentLevel").innerHTML = "<h1 ><em> Current Level: </em>" + level + "m <em>at</em> " + date + "</h1>"
     // if levels are rising or falling
     if (RISING){
         document.getElementById("changeInLevel").innerHTML = "<img style='display:inline' src='img/down.png' height='50px' width='50px'><p style='display:inline; padding:1px;'> Falling </p>"
